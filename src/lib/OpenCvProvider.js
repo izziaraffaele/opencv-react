@@ -23,7 +23,12 @@ export const OpenCvProvider = ({
   })
 
   React.useEffect(() => {
-    if (document.getElementById(scriptId) || window.cv) {
+    if (document.getElementById(scriptId)) {
+      return
+    }
+
+    if (window.cv) {
+      setCvInstance({ loaded: true, cv: window.cv })
       return
     }
 
